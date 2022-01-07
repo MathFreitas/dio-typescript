@@ -1,16 +1,13 @@
 interface IUsuario {
     id: string;
     email: string;
+    cargo?: 'funcionario' | 'gerente' | 'coordenador' | 'supervisor';
 }
 
-interface IAdmin extends IUsuario {
-    cargo: 'gerente' | 'coordenador' | 'supervisor';
-}
-
-function redirecione(usuario: IUsuario | IAdmin) {
-    if ('cargo' in usuario) {
-        //redirecionar para area de administração
+function redirecione(usuario: IUsuario) {
+    if (usuario.cargo) {
+        //redirecionar(usuario.cargo)
     }
 
-    //redirecionar para area do usuario
+    //redirecionar para a area do usuario
 }
