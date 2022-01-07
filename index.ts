@@ -1,13 +1,22 @@
-interface IUsuario {
-    id: string;
-    email: string;
-    cargo?: 'funcionario' | 'gerente' | 'coordenador' | 'supervisor';
+interface ICachorro {
+    nome: string;
+    idade: number;
+    parqueFavorito?: string;
 }
 
-function redirecione(usuario: IUsuario) {
-    if (usuario.cargo) {
-        //redirecionar(usuario.cargo)
+type CachorroSomenteLeitura = {
+    +readonly [K in keyof ICachorro]-?: ICachorro[K]
+}
+
+class MeuCachorro implements CachorroSomenteLeitura {
+    idade;
+    nome;
+
+    constructor(nome, idade) {
+        this.nome = nome;
+        this.idade = idade;
     }
-
-    //redirecionar para a area do usuario
 }
+
+const cao = new MeuCachorro('yuki', 10);
+
