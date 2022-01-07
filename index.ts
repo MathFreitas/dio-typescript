@@ -1,22 +1,11 @@
-interface ICachorro {
-    nome: string;
-    idade: number;
-    parqueFavorito?: string;
-}
+//Exemplo com jquery
 
-type CachorroSomenteLeitura = {
-    +readonly [K in keyof ICachorro]-?: ICachorro[K]
-}
+import $ from 'jquery';
 
-class MeuCachorro implements CachorroSomenteLeitura {
-    idade;
-    nome;
-
-    constructor(nome, idade) {
-        this.nome = nome;
-        this.idade = idade;
+$.fn.extend({
+    novaFuncao() {
+        console.log('Chamou nova função');
     }
-}
+});
 
-const cao = new MeuCachorro('yuki', 10);
-
+$('body').novaFuncao();
